@@ -1,8 +1,9 @@
 #this script opens up a webdriver and signs up for hulu account
 from selenium import webdriver
-import pyautogui
+import pyautogui, time, os
 from selenium.webdriver.common.keys import Keys
-import time
+
+
 
 def hooverMouse():
     time.sleep(5)
@@ -22,7 +23,8 @@ def signUpAcc():
     hooverMouse()
 
     #moves mouse over to drag the scroll down
-    pyautogui.dragTo(3815, 461, 3, button='left')
+    pyautogui.scroll(-15, x=3815, y=461)
+    #pyautogui.dragTo(3815, 461, 3, button='left')
 
 
     #hoovers over the month button and clicks on it
