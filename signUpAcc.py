@@ -57,6 +57,10 @@ def signUpAcc():
     #click continue
     pyautogui.moveTo(1837, 1325, duration=0.25)
     #pyautogui.leftClick()
+    driver.find_element_by_xpath('//*[@id="email"]').send_keys("test email")
+    driver.find_element_by_xpath('//*[@id="password"]').send_keys("testpword")
+    driver.find_element_by_xpath('//*[@id="firstName"]').send_keys("Mike Hunt")
+    driver.find_element_by_xpath('//*[@id="root"]/div/main/div[2]/div/form/button').click()
 
     time.sleep(10000)
 
