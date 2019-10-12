@@ -11,6 +11,10 @@ def email():
 
 
 
+def password():
+    password = 'Davenport563!'
 
+def name():
+    firstName = 'Tony Stark'
 if __name__ == '__main__':
     print(email())
