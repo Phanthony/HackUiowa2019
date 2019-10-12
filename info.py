@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib3
+from pip._vendor.distlib.compat import raw_input
 
 
 def email():
@@ -16,5 +17,11 @@ def password():
 
 def name():
     firstName = 'Tony Stark'
+
+def cardNumber():
+    creditCard = raw_input("Enter your credit card number : ")
+    theNumber = []
+    theNumber.append(creditCard)
+    print(theNumber)
 if __name__ == '__main__':
-    print(email())
+    print(cardNumber())
