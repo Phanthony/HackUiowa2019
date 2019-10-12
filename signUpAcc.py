@@ -40,11 +40,23 @@ def signUpAcc():
     pyautogui.moveTo(1883, 1108, duration=0.25)
     pyautogui.leftClick()
 
-    #hoovers over the year button and clicks on it
+    #hoovers over the year button and clicks on it/scroll down
     pyautogui.moveTo(2282, 618, duration=0.25)
     pyautogui.leftClick()
+    pyautogui.moveTo(2474, 730, duration=0.25)
+    pyautogui.scroll(-750)
     pyautogui.moveTo(2230, 1107, duration=0.25)
     pyautogui.leftClick()
+
+    #hoovers over gender and selects perfer not to say
+    pyautogui.moveTo(1805, 894, duration=0.25)
+    pyautogui.leftClick()
+    pyautogui.moveTo(1577, 1184, duration=0.25)
+    pyautogui.leftClick()
+
+    #click continue
+    pyautogui.moveTo(1837, 1325, duration=0.25)
+    #pyautogui.leftClick()
 
     time.sleep(10000)
 
