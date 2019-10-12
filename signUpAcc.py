@@ -24,27 +24,27 @@ def signUpAcc():
     hooverMouse()
 
     #moves mouse over to drag the scroll down
-    pyautogui.scroll(-15, x=3815, y=461)
-    #pyautogui.dragTo(3815, 461, 3, button='left')
+    pyautogui.moveTo(3815, 461, duration=0.25)
+    pyautogui.scroll(-1000)
 
 
     #hoovers over the month button and clicks on it
-    #pyautogui.moveTo(1457, 1675, duration=0.25)
-    #pyautogui.leftClick()
-    #pyautogui.moveTo(1492, 2031, duration=0.25)
-    #pyautogui.leftClick()
+    pyautogui.moveTo(1390, 616, duration=0.25)
+    pyautogui.leftClick()
+    pyautogui.moveTo(1612, 1024, duration=0.25)
+    pyautogui.leftClick()
 
     #hoovers over the day button and clicks on it
-    #pyautogui.moveTo(1978, 1681, duration=0.25)
-    #pyautogui.leftClick()
-    #pyautogui.moveTo(1974, 1439, duration=0.25)
-    #pyautogui.leftClick()
+    pyautogui.moveTo(1907, 610, duration=0.25)
+    pyautogui.leftClick()
+    pyautogui.moveTo(1883, 1108, duration=0.25)
+    pyautogui.leftClick()
 
     #hoovers over the year button and clicks on it
-    #pyautogui.moveTo(2225, 1323, duration=0.25)
-    #pyautogui.leftClick()
-    #pyautogui.moveTo(2259, 1767, duration=0.25)
-    #pyautogui.leftClick()
+    pyautogui.moveTo(2282, 618, duration=0.25)
+    pyautogui.leftClick()
+    pyautogui.moveTo(2230, 1107, duration=0.25)
+    pyautogui.leftClick()
 
     time.sleep(10000)
 

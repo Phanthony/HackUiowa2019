@@ -3,7 +3,7 @@ import pyautogui,time
 #a script to automate the moving of mouse to center of screen and click on plan for hulu
 def printPosition():
 
-    #the code below prints the x,y coordinates. Recommended display size is 1920x1080
+    #the code below prints the x,y coordinates. Recommended display size is 3840x2160
     print('Press Ctrl-C to quit.')
     try:
         while True:
