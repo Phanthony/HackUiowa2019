@@ -4,7 +4,6 @@ import pyautogui, time, os
 from selenium.webdriver.common.keys import Keys
 
 
-
 def hooverMouse():
     time.sleep(5)
     pyautogui.moveTo(1917, 1754, duration=0.25)
@@ -13,7 +12,9 @@ def hooverMouse():
 
 def signUpAcc():
     #opens up web browser and selects plan
-    driver = webdriver.Chrome('C:\\Users\\Nghia\\PycharmProjects\\HackUiowa2019\\resources\\chromedriver.exe')
+    dirpath = os.getcwd()
+    dirpath+= "\\resources\\chromedriver.exe"
+    driver = webdriver.Chrome(dirpath)
     driver.get("https://www.hulu.com/welcome")
     pyautogui.moveTo(2457, 70, duration=0.25)
     pyautogui.leftClick()
