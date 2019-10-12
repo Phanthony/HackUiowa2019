@@ -62,7 +62,7 @@ def zip():
     if (lengthOfNum != 5):
         print('invalid zipcode, try again')
         zip()
-    print(zip)
+    print(numbers)
 
 if __name__ == '__main__':
     cardExpiration()
