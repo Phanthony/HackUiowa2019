@@ -62,7 +62,7 @@ def signUpAcc():
     #pyautogui.leftClick()
 
     #EMAIL, PASS, FIRSTNAME
-    driver.find_element_by_xpath('//*[@id="email"]').send_keys("c4039376@urhen.com")
+    driver.find_element_by_xpath('//*[@id="email"]').send_keys("andrichter@uiowa.edu")
     driver.find_element_by_xpath('//*[@id="password"]').send_keys("testpword")
     driver.find_element_by_xpath('//*[@id="firstName"]').send_keys("Mike Hunt")
 
@@ -100,9 +100,9 @@ def signUpAcc():
 
     #CC Num, exp, cvc. zip
     driver.find_element_by_xpath('//*[@id="creditCard"]').send_keys("")
-    driver.find_element_by_xpath('//*[@id="expiry"]').send_keys("0969")
-    driver.find_element_by_xpath('//*[@id="cvc"]').send_keys("832")
-    driver.find_element_by_xpath('//*[@id="zip"]').send_keys("52245")
+    driver.find_element_by_xpath('//*[@id="expiry"]').send_keys("")
+    driver.find_element_by_xpath('//*[@id="cvc"]').send_keys("")
+    driver.find_element_by_xpath('//*[@id="zip"]').send_keys("52722")
 
     #Submit
     driver.find_element_by_xpath('//*[@id="root"]/div/main/div[2]/form/div[3]/button').click()
