@@ -27,8 +27,8 @@ def signUpAcc():
     #hooverMouse()
 
     #moves mouse over to drag the scroll down
-    pyautogui.moveTo(3815, 461, duration=0.25)
-    pyautogui.scroll(-1000)
+    #pyautogui.moveTo(3815, 461, duration=0.25)
+    #pyautogui.scroll(-1000)
 
 
     #hoovers over the month button and clicks on it
@@ -52,16 +52,16 @@ def signUpAcc():
     #pyautogui.leftClick()
 
     #hoovers over gender and selects perfer not to say
-    pyautogui.moveTo(1805, 894, duration=0.25)
-    pyautogui.leftClick()
-    pyautogui.moveTo(1577, 1184, duration=0.25)
-    pyautogui.leftClick()
-
-    #click continue
-    pyautogui.moveTo(1837, 1325, duration=0.25)
+    #pyautogui.moveTo(1805, 894, duration=0.25)
+    #pyautogui.leftClick()
+    #pyautogui.moveTo(1577, 1184, duration=0.25)
     #pyautogui.leftClick()
 
+    #click continue
+    #pyautogui.moveTo(1837, 1325, duration=0.25)
+    #pyautogui.leftClick()
 
+    #EMAIL, PASS, FIRSTNAME
     driver.find_element_by_xpath('//*[@id="email"]').send_keys("c4039376@urhen.com")
     driver.find_element_by_xpath('//*[@id="password"]').send_keys("testpword")
     driver.find_element_by_xpath('//*[@id="firstName"]').send_keys("Mike Hunt")
@@ -81,11 +81,31 @@ def signUpAcc():
 
     #YEAR
     driver.find_element_by_xpath('//*[@id="root"]/div/main/div[2]/div/form/div[2]/div[4]/div[4]/div/div').click()
-    pyautogui.press('1969')
+    pyautogui.press('1')
+    pyautogui.press('9')
+    pyautogui.press('6')
+    pyautogui.press('9')
     pyautogui.press('enter')
 
-    #driver.find_element_by_xpath('//*[@id="root"]/div/main/div[2]/div/form/button').click()
+    #Gender
+    driver.find_element_by_xpath('//*[@id="root"]/div/main/div[2]/div/form/div[2]/div[5]/div[2]/div/div').click()
+    pyautogui.press("p")
+    pyautogui.press("enter")
 
+    #Continue
+    driver.find_element_by_xpath('//*[@id="root"]/div/main/div[2]/div/form/button').click()
+
+
+    time.sleep(1)
+
+    #CC Num, exp, cvc. zip
+    driver.find_element_by_xpath('//*[@id="creditCard"]').send_keys("")
+    driver.find_element_by_xpath('//*[@id="expiry"]').send_keys("0969")
+    driver.find_element_by_xpath('//*[@id="cvc"]').send_keys("832")
+    driver.find_element_by_xpath('//*[@id="zip"]').send_keys("52245")
+
+    #Submit
+    driver.find_element_by_xpath('//*[@id="root"]/div/main/div[2]/form/div[3]/button').click()
     time.sleep(10000)
 
 
