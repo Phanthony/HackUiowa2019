@@ -18,51 +18,27 @@ def password():
 def name():
     firstName = 'Tony Stark'
 
-def cardNumber():
-    creditCard = int(raw_input("Enter your credit card number : "))
-    theNumber = []
-    theNumber.append(creditCard)
-    creditCardNumber = theNumber[0]
-    lengthOfNum = len(str(creditCardNumber))
-    if(lengthOfNum != 16 | lengthOfNum != 19):
+def cardNumber(creditCard):
+    if(len(str(creditCard)) != 16 | len(str(creditCard)) != 19):
         print('invalid credit card number')
-        cardNumber()
-    print(creditCardNumber)
+    print(len(str(creditCard)))
 
 
-def cardExpiration():
-    expirationNum = int(raw_input("Enter expiration number in MMYY format :"))
-    theNumber = []
-    theNumber.append(expirationNum)
-    numbers = theNumber[0]
-    lengthOfNum = len(str(numbers))
-    if(lengthOfNum != 4):
+def cardExpiration(expirationNum):
+    if(len(str(expirationNum)) != 4):
         print('invalid format, please retry again')
-        cardExpiration()
-    print(numbers)
+    print(len(str(expirationNum)))
 
-def cvc():
-    cvcNum = int(raw_input("Enter the cvc number :"))
-    theNumber = []
-    theNumber.append(cvcNum)
-    numbers = theNumber[0]
-    lengthOfNum = len(str(numbers))
-    if(lengthOfNum != 3 | lengthOfNum != 4):
+def cvc(cvcNum):
+    print(len(str(cvcNum)))
+    if(len(str(cvcNum)) != 3 | len(str(cvcNum)) != 4):
         print('invalid cvc number, try again')
-        cvc()
-    print(numbers)
+    print(len(str(cvcNum)))
 
 
-def zip():
-    zipNum = int(raw_input("Enter zipcode :"))
-    theNumber = []
-    theNumber.append(zipNum)
-    numbers = theNumber[0]
-    lengthOfNum = len(str(numbers))
-    if (lengthOfNum != 5):
+def zip(zipNum):
+    if (len(str(zipNum)) != 5):
         print('invalid zipcode, try again')
-        zip()
-    print(numbers)
-
+    print(len(str(zipNum)))
 if __name__ == '__main__':
-    cardExpiration()
+    cvc()
