@@ -21,24 +21,27 @@ def name():
 def cardNumber(creditCard):
     if(len(str(creditCard)) != 16 | len(str(creditCard)) != 19):
         print('invalid credit card number')
-    print(len(str(creditCard)))
+        return(False)
+    return(True)
 
 
 def cardExpiration(expirationNum):
     if(len(str(expirationNum)) != 4):
         print('invalid format, please retry again')
-    print(len(str(expirationNum)))
-
+        return(False)
+    return(True)
 def cvc(cvcNum):
     print(len(str(cvcNum)))
     if(len(str(cvcNum)) != 3 | len(str(cvcNum)) != 4):
         print('invalid cvc number, try again')
-    print(len(str(cvcNum)))
+        return(False)
+    return(True)
 
 
 def zip(zipNum):
     if (len(str(zipNum)) != 5):
         print('invalid zipcode, try again')
-    print(len(str(zipNum)))
+        return(False)
+    return(True)
 if __name__ == '__main__':
     cvc()
