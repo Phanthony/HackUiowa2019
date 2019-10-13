@@ -3,16 +3,31 @@ from tkinter import *
 from info import *
 from signUpAcc import *
 import datetime
+import ast
 
 dateformat = "%m/%d/%Y"
 date = datetime.datetime
 date.now().strftime(dateformat)
 testDict = {"username": "test username",
-            "password":"jijifdjsg3423",
+            "password":"jijifd423",
             "datecreated": "10/4/2019"}
 
-class cc:
+dirpath = os.getcwd()
+dirpath += "\\resources\\accounts"
 
+file = open(dirpath, "r")
+accStrList = file.readlines()
+
+accDicList = []
+
+for x in accStrList:
+    x.rstrip()
+    if(x != "") or (x != "\n"):
+        accDicList.append(ast.literal_eval(x))
+
+file.close()
+
+class cc:
     def __init__(self):
         self.cc = ""
         self.zip = ""
@@ -100,7 +115,6 @@ class cc:
 
     def buildInterface(self, c):
         c.destroy()
-        print("wat")
         main = interface(self.cc, self.cvc, self.zip, self.exp)
         main.buildInterface()
 
@@ -127,7 +141,30 @@ class interface:
         self.timeLeftFrame = Frame(userFrame, relief="sunken")
         userFrame.pack(fill="both", expand=True)
 
+    def writeToFile(self):
+
+        open(dirpath,"r").close()
+
+        ofile = open(dirpath,"w")
+
+        for x in accDicList:
+            ofile.write(str(x))
+            ofile.write("\n")
+
+        ofile.close()
+
+    def newAcc(self, accountDict):
+        password = password()
+        name = name()
+        email = email()
+
+        temp = {"username: "}
+
+        accDicList.append(accountDict)
+        self.addAccount(accountDict)
+
     def addAccount(self, accountDict):
+
         userNameFrame = self.userNameFrame
         timeLeftFrame = self.timeLeftFrame
         dateCreatedFrame = self.dateCreatedFrame
@@ -153,12 +190,32 @@ class interface:
                               command=lambda: self.deleteAccount(usernameLabel, dateLabel, timeLabel, deleteButton, passwordLabel))
         deleteButton.pack(side="top", pady=1)
 
+        self.writeToFile()
+
     def deleteAccount(self, userLabel, dateLabel, timeLabel, button, passwordLabel):
+
+        email = userLabel.cget("text")
+        date = dateLabel.cget("text")
+        password = passwordLabel.cget("text")
+
+        for i in range(len(accDicList)):
+            t = accDicList[i]
+            print(t)
+            print(email)
+            print(date)
+            print(password)
+            if (t["username"] == email) and (t["datecreated"]==date) and (t["password"]==password):
+                print("wat")
+                accDicList.remove(t)
+                break
+
         userLabel.pack_forget()
         dateLabel.pack_forget()
         timeLabel.pack_forget()
         button.pack_forget()
         passwordLabel.pack_forget()
+
+        self.writeToFile()
 
     def buildInterface(self):
         m = self.main
@@ -184,9 +241,12 @@ class interface:
         Label(delFrame, text=" ").pack()
 
         buttonFrame = Frame(m)
-        createButton = tkinter.Button(buttonFrame, text="Create New Account", command=lambda: self.addAccount(testDict))
+        createButton = tkinter.Button(buttonFrame, text="Create New Account", command=lambda: self.newAcc(testDict))
         createButton.pack(side="top")
         buttonFrame.pack(fill="x")
+
+        for xf in accDicList:
+            self.addAccount(xf)
 
         m.mainloop()
 

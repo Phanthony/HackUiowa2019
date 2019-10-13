@@ -8,15 +8,15 @@ def email():
     r = http.request('GET', 'https://10minutemail.com/10MinuteMail/index.html')
     soup = BeautifulSoup(r.data, 'html.parser')
     email = (soup.find_all('input')[2]['value'])
-    print(email)
+    return email
 
 
 
 def password():
-    password = 'Davenport563!'
+    return 'Davenport563!'
 
 def name():
-    firstName = 'Tony Stark'
+    return 'Tony Stark'
 
 def cardNumber(creditCard):
     if(len(str(creditCard)) != 16 | len(str(creditCard)) != 19):
