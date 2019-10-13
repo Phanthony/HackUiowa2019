@@ -32,11 +32,11 @@ def cardExpiration(expirationNum):
     return(True)
 
 def cvc(cvcNum):
-    print(len(str(cvcNum)))
-    if(len(str(cvcNum)) != 3 | len(str(cvcNum)) != 4):
-        print('invalid cvc number, try again')
-        return(False)
-    return(True)
+    if(len(str(cvcNum)) == 3 or len(str(cvcNum)) == 4):
+        return(True)
+
+    print('invalid cvc number, try again')
+    return(False)
 
 
 def zip(zipNum):
@@ -44,5 +44,6 @@ def zip(zipNum):
         print('invalid zipcode, try again')
         return(False)
     return(True)
+
 if __name__ == '__main__':
     cvc()
