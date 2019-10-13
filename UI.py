@@ -16,14 +16,45 @@ class cc:
         self.cvc = ""
         self.exp = ""
 
-    def ccTester(self, ccEntry, ccLabel, c):
-        if cardNumber(str(ccEntry.get())):
-            ccEntry.pack_forget()
-            ccLabel.pack_forget()
-            self.cc = str(ccEntry.get())
+    def ccTester(self, Entry, Label, Button, c):
+        if cardNumber(str(Entry.get())):
+            Entry.pack_forget()
+            Label.pack_forget()
+            Button.pack_forget()
+            self.cc = str(Entry.get())
             self.getCVC(c)
         else:
-            ccLabel.configure(text="Wrong Credit Card")
+            Label.configure(text="Wrong Credit Card")
+
+    def cvcTester(self, Entry, Label, Button, c):
+        if cvc(str(Entry.get())):
+            Entry.pack_forget()
+            Label.pack_forget()
+            Button.pack_forget()
+            self.cc = str(Entry.get())
+            self.getZip(c)
+        else:
+            Label.configure(text="Wrong CVC")
+
+    def zipTester(self, Entry, Label, Button, c):
+        if zip(str(Entry.get())):
+            Entry.pack_forget()
+            Label.pack_forget()
+            Button.pack_forget()
+            self.cc = str(Entry.get())
+            self.getExp(c)
+        else:
+            Label.configure(text="Wrong Zip Code")
+
+    def expTester(self, Entry, Label, Button, c):
+        if cardExpiration(str(Entry.get())):
+            Entry.pack_forget()
+            Label.pack_forget()
+            Button.pack_forget()
+            self.cc = str(Entry.get())
+            self.buildInterface(c)
+        else:
+            Label.configure(text="Wrong Expiration Date")
 
     def getCC(self):
         c = tkinter.Tk()
@@ -33,7 +64,8 @@ class cc:
         ccLabel.pack()
 
 
-        ccButton = Button(c, text="OK", command=lambda: self.ccTester(ccEntry,ccLabel, c)).pack()
+        ccButton = Button(c, text="OK", command=lambda: self.ccTester(ccEntry,ccLabel, ccButton, c))
+        ccButton.pack()
 
         c.mainloop()
 
@@ -43,13 +75,10 @@ class cc:
         cvcLabel = Label(c, text="Enter Your CVC")
         cvcLabel.pack()
 
-        if cvc(str(cvcEntry.get())):
-            cvcEntry.pack_forget()
-            cvcLabel.pack_forget()
-            self.cvc = str(cvcEntry.get())
-            self.getCVC(c)
-        else:
-            cvcLabel.configure(text="Wrong CVC")
+        cvcButton = Button(c, text="OK", command=lambda: self.cvcTester(cvcEntry, cvcLabel, cvcButton, c))
+        cvcButton.pack()
+
+
 
     def getZip(self, c):
         zipEntry = Entry(c)
@@ -57,13 +86,8 @@ class cc:
         zipLabel = Label(c, text="Enter Your Zip Code")
         zipLabel.pack()
 
-        if cvc(str(zipEntry.get())):
-            zipEntry.pack_forget()
-            zipLabel.pack_forget()
-            self.zip = str(zipEntry.get())
-            self.getCVC(c)
-        else:
-            zipLabel.configure(text="Wrong Zip Code")
+        zipButton = Button(c, text="OK", command=lambda: self.zipTester(zipEntry, zipLabel, zipButton, c))
+        zipButton.pack()
 
     def getExp(self, c):
         expEntry = Entry(c)
@@ -71,16 +95,12 @@ class cc:
         expLabel = Label(c, text="Enter Your Expiration")
         expLabel.pack()
 
-        if cvc(str(expEntry.get())):
-            expEntry.pack_forget()
-            expLabel.pack_forget()
-            self.exp = str(expEntry.get())
-
-        else:
-            expLabel.configure(text="Wrong Expiration")
+        expButton = Button(c, text="OK", command=lambda: self.expTester(expEntry, expLabel, expButton, c))
+        expButton.pack()
 
     def buildInterface(self, c):
-        c.destory()
+        c.destroy()
+        print("wat")
         main = interface(self.cc,self.cvc,self.zip,self.exp)
         main.buildInterface()
 
@@ -155,6 +175,8 @@ class interface:
         createButton = tkinter.Button(buttonFrame, text="Create New Account", command=lambda: self.addAccount(testDict))
         createButton.pack(side="top")
         buttonFrame.pack(fill="x")
+
+        m.mainloop()
 
 
 if __name__ == '__main__':

@@ -30,6 +30,7 @@ def cardExpiration(expirationNum):
         print('invalid format, please retry again')
         return(False)
     return(True)
+
 def cvc(cvcNum):
     print(len(str(cvcNum)))
     if(len(str(cvcNum)) != 3 | len(str(cvcNum)) != 4):
