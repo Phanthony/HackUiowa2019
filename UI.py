@@ -2,11 +2,14 @@ import tkinter
 from tkinter import *
 from info import *
 from signUpAcc import *
+import datetime
 
+dateformat = "%m/%d/%Y"
+date = datetime.datetime
+date.now().strftime(dateformat)
 testDict = {"username": "test username",
-            "datecreated": "October 12, 2019",
-            "timeleft": "30 Days"}
-
+            "password":"jijifdjsg3423",
+            "datecreated": "10/4/2019"}
 
 class cc:
 
@@ -63,8 +66,7 @@ class cc:
         ccLabel = Label(c, text="Enter Your Credit Card")
         ccLabel.pack()
 
-
-        ccButton = Button(c, text="OK", command=lambda: self.ccTester(ccEntry,ccLabel, ccButton, c))
+        ccButton = Button(c, text="OK", command=lambda: self.ccTester(ccEntry, ccLabel, ccButton, c))
         ccButton.pack()
 
         c.mainloop()
@@ -77,8 +79,6 @@ class cc:
 
         cvcButton = Button(c, text="OK", command=lambda: self.cvcTester(cvcEntry, cvcLabel, cvcButton, c))
         cvcButton.pack()
-
-
 
     def getZip(self, c):
         zipEntry = Entry(c)
@@ -101,7 +101,7 @@ class cc:
     def buildInterface(self, c):
         c.destroy()
         print("wat")
-        main = interface(self.cc,self.cvc,self.zip,self.exp)
+        main = interface(self.cc, self.cvc, self.zip, self.exp)
         main.buildInterface()
 
 
@@ -122,6 +122,7 @@ class interface:
         self.main = m
         self.delFrame = Frame(userFrame, relief="sunken")
         self.userNameFrame = Frame(userFrame, relief="sunken")
+        self.passwordFrame = Frame(userFrame, relief="sunken")
         self.dateCreatedFrame = Frame(userFrame, relief="sunken")
         self.timeLeftFrame = Frame(userFrame, relief="sunken")
         userFrame.pack(fill="both", expand=True)
@@ -130,6 +131,11 @@ class interface:
         userNameFrame = self.userNameFrame
         timeLeftFrame = self.timeLeftFrame
         dateCreatedFrame = self.dateCreatedFrame
+        passwordFrame = self.passwordFrame
+
+        password = accountDict["password"]
+        passwordLabel = Label(passwordFrame, text=password)
+        passwordLabel.pack(side="top",pady="12")
 
         username = accountDict["username"]
         usernameLabel = Label(userNameFrame, text=username)
@@ -139,18 +145,20 @@ class interface:
         dateLabel = Label(dateCreatedFrame, text=dateCreated)
         dateLabel.pack(side="top", pady=12)
 
-        timeLeft = accountDict["timeleft"]
+        timeLeft = (date.strptime(date.now().strftime(dateformat), dateformat) - date.strptime(dateCreated,dateformat)).days
         timeLabel = Label(timeLeftFrame, text=timeLeft)
         timeLabel.pack(side="top", pady=12)
 
-        deleteButton = Button(self.delFrame, text="Delete Account", bg="red", fg="black",command=lambda: self.deleteAccount(usernameLabel,dateLabel,timeLabel,deleteButton))
+        deleteButton = Button(self.delFrame, text="Delete Account", bg="red", fg="black",
+                              command=lambda: self.deleteAccount(usernameLabel, dateLabel, timeLabel, deleteButton, passwordLabel))
         deleteButton.pack(side="top", pady=1)
 
-    def deleteAccount(self, userLabel, dateLabel, timeLabel, button):
+    def deleteAccount(self, userLabel, dateLabel, timeLabel, button, passwordLabel):
         userLabel.pack_forget()
         dateLabel.pack_forget()
         timeLabel.pack_forget()
         button.pack_forget()
+        passwordLabel.pack_forget()
 
     def buildInterface(self):
         m = self.main
@@ -158,15 +166,19 @@ class interface:
         userNameFrame = self.userNameFrame
         timeLeftFrame = self.timeLeftFrame
         dateCreatedFrame = self.dateCreatedFrame
+        passwordFrame = self.passwordFrame
 
         userNameFrame.pack(fill="both", expand=True, side="left")
-        Label(userNameFrame, text="Username").pack()
+        Label(userNameFrame, text="Email").pack()
+
+        passwordFrame.pack(fill="both", expand=True, side="left")
+        Label(passwordFrame, text="Password").pack()
 
         dateCreatedFrame.pack(fill="both", expand=True, side="left")
         Label(dateCreatedFrame, text="Date Created").pack()
 
         timeLeftFrame.pack(fill="both", expand=True, side="left")
-        Label(timeLeftFrame, text="Time Left").pack()
+        Label(timeLeftFrame, text="Days Since Creation").pack()
 
         delFrame.pack(fill="both", expand=True, side="left")
         Label(delFrame, text=" ").pack()
